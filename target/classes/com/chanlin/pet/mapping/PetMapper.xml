@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chanlin.pet.dao.PetMapper" >
+  <resultMap id="BaseResultMap" type="com.chanlin.pet.model.Pet" >
+    <id column="p_id" property="pId" jdbcType="INTEGER" />
+    <result column="p_name" property="pName" jdbcType="VARCHAR" />
+    <result column="p_sex" property="pSex" jdbcType="VARCHAR" />
+    <result column="p_age" property="pAge" jdbcType="REAL" />
+    <result column="p_bid" property="pBid" jdbcType="INTEGER" />
+    <result column="p_longitude" property="pLongitude" jdbcType="REAL" />
+    <result column="p_latitude" property="pLatitude" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    p_id, p_name, p_sex, p_age, p_bid, p_longitude, p_latitude
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from pet
+    where p_id = #{pId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from pet
+    where p_id = #{pId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chanlin.pet.model.Pet" >
+    insert into pet (p_id, p_name, p_sex, 
+      p_age, p_bid, p_longitude, p_latitude
+      )
+    values (#{pId,jdbcType=INTEGER}, #{pName,jdbcType=VARCHAR}, #{pSex,jdbcType=VARCHAR}, 
+      #{pAge,jdbcType=REAL}, #{pBid,jdbcType=INTEGER}, #{pLongitude,jdbcType=REAL}, #{pLatitude,jdbcType=REAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chanlin.pet.model.Pet" >
+    insert into pet
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pId != null" >
+        p_id,
+      </if>
+      <if test="pName != null" >
+        p_name,
+      </if>
+      <if test="pSex != null" >
+        p_sex,
+      </if>
+      <if test="pAge != null" >
+        p_age,
+      </if>
+      <if test="pBid != null" >
+        p_bid,
+      </if>
+      <if test="pLongitude != null" >
+        p_longitude,
+      </if>
+      <if test="pLatitude != null" >
+        p_latitude,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pId != null" >
+        #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="pName != null" >
+        #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pSex != null" >
+        #{pSex,jdbcType=VARCHAR},
+      </if>
+      <if test="pAge != null" >
+        #{pAge,jdbcType=REAL},
+      </if>
+      <if test="pBid != null" >
+        #{pBid,jdbcType=INTEGER},
+      </if>
+      <if test="pLongitude != null" >
+        #{pLongitude,jdbcType=REAL},
+      </if>
+      <if test="pLatitude != null" >
+        #{pLatitude,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chanlin.pet.model.Pet" >
+    update pet
+    <set >
+      <if test="pName != null" >
+        p_name = #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pSex != null" >
+        p_sex = #{pSex,jdbcType=VARCHAR},
+      </if>
+      <if test="pAge != null" >
+        p_age = #{pAge,jdbcType=REAL},
+      </if>
+      <if test="pBid != null" >
+        p_bid = #{pBid,jdbcType=INTEGER},
+      </if>
+      <if test="pLongitude != null" >
+        p_longitude = #{pLongitude,jdbcType=REAL},
+      </if>
+      <if test="pLatitude != null" >
+        p_latitude = #{pLatitude,jdbcType=REAL},
+      </if>
+    </set>
+    where p_id = #{pId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chanlin.pet.model.Pet" >
+    update pet
+    set p_name = #{pName,jdbcType=VARCHAR},
+      p_sex = #{pSex,jdbcType=VARCHAR},
+      p_age = #{pAge,jdbcType=REAL},
+      p_bid = #{pBid,jdbcType=INTEGER},
+      p_longitude = #{pLongitude,jdbcType=REAL},
+      p_latitude = #{pLatitude,jdbcType=REAL}
+    where p_id = #{pId,jdbcType=INTEGER}
+  </update>
+</mapper>

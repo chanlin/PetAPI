@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chanlin.pet.dao.BreedMapper" >
+  <resultMap id="BaseResultMap" type="com.chanlin.pet.model.Breed" >
+    <id column="b_id" property="bId" jdbcType="INTEGER" />
+    <result column="b_breed" property="bBreed" jdbcType="VARCHAR" />
+    <result column="b_pid" property="bPid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    b_id, b_breed, b_pid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from breed
+    where b_id = #{bId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from breed
+    where b_id = #{bId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chanlin.pet.model.Breed" >
+    insert into breed (b_id, b_breed, b_pid
+      )
+    values (#{bId,jdbcType=INTEGER}, #{bBreed,jdbcType=VARCHAR}, #{bPid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chanlin.pet.model.Breed" >
+    insert into breed
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bId != null" >
+        b_id,
+      </if>
+      <if test="bBreed != null" >
+        b_breed,
+      </if>
+      <if test="bPid != null" >
+        b_pid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bId != null" >
+        #{bId,jdbcType=INTEGER},
+      </if>
+      <if test="bBreed != null" >
+        #{bBreed,jdbcType=VARCHAR},
+      </if>
+      <if test="bPid != null" >
+        #{bPid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chanlin.pet.model.Breed" >
+    update breed
+    <set >
+      <if test="bBreed != null" >
+        b_breed = #{bBreed,jdbcType=VARCHAR},
+      </if>
+      <if test="bPid != null" >
+        b_pid = #{bPid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where b_id = #{bId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chanlin.pet.model.Breed" >
+    update breed
+    set b_breed = #{bBreed,jdbcType=VARCHAR},
+      b_pid = #{bPid,jdbcType=INTEGER}
+    where b_id = #{bId,jdbcType=INTEGER}
+  </update>
+</mapper>
