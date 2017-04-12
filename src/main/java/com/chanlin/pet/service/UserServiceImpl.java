@@ -19,8 +19,12 @@ public class UserServiceImpl implements UserServiceI {
 	public void setUserMapper(UserMapper userMapper) {
 		this.userMapper = userMapper;
 	}
-
-
+	
+	@Override
+	public int addUser(User user){
+		int count = userMapper.insertSelective(user);
+		return count;
+	}
 	@Override
 	public User login() {
 		// TODO Auto-generated method stub
