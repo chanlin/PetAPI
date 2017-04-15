@@ -136,4 +136,8 @@
       u_pid = #{uPid,jdbcType=INTEGER}
     where u_id = #{uId,jdbcType=INTEGER}
   </update>
+  <!-- 修改密码 -->
+  <update id="updatePwdByPhone" parameterType="java.lang.String">
+  	update user set u_password = #{uPassword,jdbcType=VARCHAR} where u_phone = #{uPhone,jdbcType=VARCHAR}
+  </update>
 </mapper>

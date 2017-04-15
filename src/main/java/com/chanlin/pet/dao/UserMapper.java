@@ -1,5 +1,7 @@
 package com.chanlin.pet.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.chanlin.pet.model.User;
 
 public interface UserMapper {
@@ -14,4 +16,6 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+	int updatePwdByPhone(@Param("uPhone")String uPhone, @Param("uPassword")String uPassword);
 }

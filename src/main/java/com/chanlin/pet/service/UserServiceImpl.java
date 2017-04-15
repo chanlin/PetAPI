@@ -36,4 +36,10 @@ public class UserServiceImpl implements UserServiceI {
 		return userMapper.selectByPrimaryKey(id);
 	}
 
+	@Override
+	public int updatePwd(String mobile, String password) {
+		// TODO Auto-generated method stub
+		return userMapper.updatePwdByPhone(mobile,password);
+	}
+
 }
