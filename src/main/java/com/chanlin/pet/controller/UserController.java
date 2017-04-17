@@ -142,7 +142,7 @@ public class UserController {
 			result.setInfo(Status.ERROR_INFO);
 			result.setData("修改错误！");
 		}
-		return null;
+		return null; 
 
 	}
 
