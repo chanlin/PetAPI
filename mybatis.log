@@ -8802,6 +8802,7 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 [DEBUG][2017-04-12 09:37:43,837][org.springframework.beans.factory.support.DefaultListableBeanFactory]Retrieved dependent beans for bean '(inner bean)#57c03d88': [transactionAdvice]
 [DEBUG][2017-04-12 09:37:43,837][org.springframework.beans.factory.support.DisposableBeanAdapter]Invoking destroy method 'close' on bean with name 'dataSource'
 [INFO][2017-04-12 09:37:43,840][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} closed
+<<<<<<< HEAD
 [DEBUG][2017-04-15 10:26:20,976][org.springframework.test.context.junit4.SpringJUnit4ClassRunner]SpringJUnit4ClassRunner constructor called with [class com.chanlin.pet.test.Test]
 [DEBUG][2017-04-15 10:26:21,014][org.springframework.test.context.BootstrapUtils]Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
 [DEBUG][2017-04-15 10:26:21,066][org.springframework.test.context.BootstrapUtils]Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
@@ -12597,3 +12598,5 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 [DEBUG][2017-04-15 12:05:37,544][org.springframework.beans.factory.support.DefaultListableBeanFactory]Retrieved dependent beans for bean '(inner bean)#16c069df': [transactionAdvice]
 [DEBUG][2017-04-15 12:05:37,544][org.springframework.beans.factory.support.DisposableBeanAdapter]Invoking destroy method 'close' on bean with name 'dataSource'
 [INFO][2017-04-15 12:05:37,547][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} closed
+=======
+>>>>>>> 80053dc6d030b5dfde746ab7878b935ca475c531

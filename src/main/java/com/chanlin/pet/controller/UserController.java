@@ -38,6 +38,7 @@ public class UserController {
 	public void setUserService(UserServiceI userService) {
 		this.userService = userService;
 	}
+<<<<<<< HEAD
 
 	/**
 	 * 
@@ -69,10 +70,51 @@ public class UserController {
 	@ResponseBody
 	public User login(@RequestParam(value = "id") Integer id, @RequestParam(value = "name") String name) {
 		System.out.print("id=" + id + ",name=" + name);
+=======
+	/**
+	 * 
+	* @Title: getVCode 
+	* @Description: TODO      获取验证码接口
+	* @param mobile 接收短信的手机号
+	* @return void     
+	* @throws
+	 */
+	@RequestMapping("/getVCode")
+	public void getVCode(HttpServletRequest req){
+		String mobile = req.getParameter("mobile");
+		if(mobile != null){
+			//产生验证码
+			
+			//调用短信认证接口
+			
+			//验证码放入到session中
+		}else{
+			logger.warn("获取验证码接口中的mobile为空！");
+		}
+		
+	}
+	
+	/**
+	 * 
+	* @Title: login 
+	* @Description: 登录接口
+	* @param @param id
+	* @param @param name
+	* @param @return    设定文件 
+	* @return User    使用Spring内置的支持  返回 对象，内置转成json
+	* @throws
+	 */
+	@RequestMapping("/login")
+	@ResponseBody
+	public User login(@RequestParam(value="id") Integer id,
+            @RequestParam(value="name")String name){
+		System.out.print("id="+id+",name="+name);
+>>>>>>> 80053dc6d030b5dfde746ab7878b935ca475c531
 		User user = userService.login();
 
 		return user;
 	}
+<<<<<<< HEAD
 
 	/**
 	 * @throws StatusInfoException
@@ -88,26 +130,62 @@ public class UserController {
 		 * @param vkey
 		 * 
 		 * @param password （明文，服务端加密）
+=======
+	
+	/**
+	 * @throws StatusInfoException 
+	 * 
+	* @Title: register 
+	* @Description: TODO 
+	* @param req
+	* @param rep     
+	* @return void     直接 PrintWriter输出json
+	* @throws
+	 */
+	@RequestMapping("/register")
+	public void register(HttpServletRequest req,HttpServletResponse rep) throws IOException{
+		/*
+		 * @param mobile
+			@param vkey
+			@param password （明文，服务端加密）
+>>>>>>> 80053dc6d030b5dfde746ab7878b935ca475c531
 		 */
 		String mobile = req.getParameter("mobile");
 		String vkey = req.getParameter("vkey");
 		String password = req.getParameter("password");
+<<<<<<< HEAD
 		// session中获取到vkey 做比较
 		if ("123456".equals(vkey)) {
+=======
+		//session中获取到vkey 做比较
+		if("123456".equals(vkey)){
+>>>>>>> 80053dc6d030b5dfde746ab7878b935ca475c531
 			User user = new User();
 			user.setuPhone(mobile);
 			user.setuPassword(password);
 			int cont = userService.addUser(user);
+<<<<<<< HEAD
 			if (cont > 0) {
 				result.setStatus(Status.SUCCESS_STATUS);
 				result.setInfo(Status.SUCCESS_INFO);
 				result.setData("注册成功！");
 			} else {
+=======
+			if(cont > 0){
+				result.setStatus(Status.SUCCESS_STATUS);
+				result.setInfo(Status.SUCCESS_INFO);
+				result.setData("注册成功！");
+			}else{
+>>>>>>> 80053dc6d030b5dfde746ab7878b935ca475c531
 				result.setStatus(Status.ERROR_STATUS);
 				result.setInfo(Status.ERROR_INFO);
 				result.setData("注册失败！");
 			}
+<<<<<<< HEAD
 		} else {
+=======
+		}else{
+>>>>>>> 80053dc6d030b5dfde746ab7878b935ca475c531
 			result.setStatus(Status.ERROR_STATUS);
 			result.setInfo(Status.ERROR_INFO);
 			result.setData("验证码错误！");
@@ -118,6 +196,7 @@ public class UserController {
 		writer.flush();
 		writer.close();
 	}
+<<<<<<< HEAD
 
 	/**
 	 * 
@@ -146,4 +225,6 @@ public class UserController {
 
 	}
 
+=======
+>>>>>>> 80053dc6d030b5dfde746ab7878b935ca475c531
 }
