@@ -126,11 +126,4 @@ INSERT INTO `user` VALUES ('1', '13723707851', '123456', 'chanlin', '欢迎来�
 INSERT INTO `user` VALUES ('2', '11111111111', '123456', 'haha', '新来的，多多关照', '20', '0', null, null);
 INSERT INTO `user` VALUES ('3', '2222222', '111111', null, null, null, '0', null, null);
 
--- ----------------------------
--- View structure for s
--- ----------------------------
-DROP VIEW IF EXISTS `s`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `s` AS SELECT
-*
-FROM
-	breed ;
+-- ---------------------------- 
