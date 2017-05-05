@@ -1,5 +1,7 @@
 package com.chanlin.pet.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.chanlin.pet.model.User;
@@ -18,4 +20,6 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
 	int updatePwdByPhone(@Param("uPhone")String uPhone, @Param("uPassword")String uPassword);
+
+	List<User> getUserList(String user_id);
 }

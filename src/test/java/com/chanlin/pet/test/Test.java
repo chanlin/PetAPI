@@ -1,5 +1,7 @@
 package com.chanlin.pet.test;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,4 +48,12 @@ public class Test {
 			int count = userService.updatePwd(mobile,password);
 			System.out.println("forgetPw count="+count);
 		}
+		
+		@org.junit.Test
+		public void getFriends(){
+			List<User> users = userService.getFriendList("1");
+			System.err.println("=========================="+users.size());
+		}
+		
+		
 }

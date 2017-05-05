@@ -2,6 +2,7 @@ package com.chanlin.pet.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -124,7 +125,7 @@ public class UserController {
 	 * @Title: forgetPw @Description: TODO 找回密码：重置密码 @param mobile 手机号 @param
 	 * password 新密码 @param vkey 验证短信验证码时返回的票据 @return Result @throws
 	 */
-	@RequestMapping("forgetPw")
+	@RequestMapping("/forgetPw")
 	@ResponseBody
 	private Result forgetPw(HttpServletRequest req) {
 		String mobile = req.getParameter("mobile");
@@ -142,8 +143,18 @@ public class UserController {
 			result.setInfo(Status.ERROR_INFO);
 			result.setData("修改错误！");
 		}
-		return null; 
+		return result; 
 
+	}
+	@RequestMapping("/getFriends")
+	@ResponseBody
+	private Result getfriends(HttpServletRequest req){
+		String user_id = req.getParameter("userId");
+		List<User> users = userService.getFriendList(user_id);
+		result.setStatus(Status.SUCCESS_STATUS);
+		result.setInfo(Status.SUCCESS_INFO);
+		result.setData(users);
+		return result;
 	}
 
 }
